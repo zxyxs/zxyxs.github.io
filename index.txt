@@ -2,8 +2,8 @@ vCard - Personal Portfolio
 
 # sidebar
 
-alt = Richard hanrick
-Richard hanrick
+alt = Mr.Yue
+Mr.Yue
 Web developer
 
 Show Contacts
