@@ -10,13 +10,30 @@ signInButton.addEventListener('click', () => {
     container.classList.remove('right-panel-active');
 });
 
+const registeredUsers = [];
+
 document.getElementById('registerForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    window.location.href = 'https://zxyxs.github.io/dashboard.html';
+    const username = document.getElementById('registerUsername').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    
+    registeredUsers.push({ username, email, password });
+    alert('注册成功，请登录');
+    container.classList.remove('right-panel-active');
 });
 
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    // 登录逻辑可以在这里实现
-    alert('登录成功');
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    const user = registeredUsers.find(user => user.email === email && user.password === password);
+    
+    if (user) {
+        alert('登录成功');
+        window.location.href = 'https://zxyxs.github.io/dashboard.html';
+    } else {
+        alert('邮箱或密码错误，或用户未注册');
+    }
 });
