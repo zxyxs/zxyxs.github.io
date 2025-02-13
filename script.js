@@ -10,7 +10,7 @@ signInButton.addEventListener('click', () => {
     container.classList.remove('right-panel-active');
 });
 
-const registeredUsers = [];
+let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
 
 document.getElementById('registerForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -19,6 +19,8 @@ document.getElementById('registerForm').addEventListener('submit', function(even
     const password = document.getElementById('registerPassword').value;
     
     registeredUsers.push({ username, email, password });
+    localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+    
     alert('注册成功，请登录');
     container.classList.remove('right-panel-active');
 });
