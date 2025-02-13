@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container" id="register-container">
+    <h2>注册</h2>
+    <div class="image-container">
+        <img src="bg.jpg" alt="Background Image">
+    </div>
+    <input type="text" id="register-username" placeholder="用户名" required>
+    <input type="email" id="register-email" placeholder="邮箱" required>
+    <input type="tel" id="register-phone" placeholder="电话号码" required>
+    <input type="text" id="register-company" placeholder="公司名称" required>
+    <input type="text" id="register-purpose" placeholder="注册用途" required>
+    <input type="password" id="register-password" placeholder="密码" required>
+    <input type="password" id="register-confirm-password" placeholder="确认密码" required>
+    <input type="text" id="register-code" placeholder="验证码" required>
+    <button onclick="sendCode()">发送验证码</button>
+    <button onclick="register()">注册</button>
+    <div class="message" id="register-message"></div>
+    <p>已有账号？<a href="index.html">登录</a></p>
+</div>
+
+<script>
+    let users = [];
+
+    function sendCode() {
+        const email = document.getElementById('register-email').value;
+        // 模拟发送验证码到邮箱
+        alert(`验证码已发送到 ${email}`);
+    }
+
+    function register() {
+        const username = document.getElementById('register-username').value;
+        const email = document.getElementById('register-email').value;
+        const phone = document.getElementById('register-phone').value;
+        const company = document.getElementById('register-company').value;
+        const purpose = document.getElementById('register-purpose').value;
+        const password = document.getElementById('register-password').value;
+        const confirmPassword = document.getElementById('register-confirm-password').value;
+        const code = document.getElementById('register-code').value;
+
+        if (password !== confirmPassword) {
+            document.getElementById('register-message').innerText = '密码不匹配';
+            return;
+        }
+
+        if (code !== '123456') { // 假设验证码为123456
+            document.getElementById('register-message').innerText = '验证码错误';
+            return;
+        }
+
+        users.push({ username, email, phone, company, purpose, password });
+        document.getElementById('register-message').innerText = '注册成功。您现在可以登录。';
+        document.getElementById('register-message').style.color = 'green';
+    }
+</script>
+
+</body>
+</html>
