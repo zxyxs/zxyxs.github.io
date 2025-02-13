@@ -12,12 +12,14 @@
     <h2>登录</h2>
     <input type="text" id="login-username" placeholder="用户名" required>
     <input type="password" id="login-password" placeholder="密码" required>
-    <button onclick="login()">登录</button>
+    <button id="login-button">登录</button>
     <div class="message" id="login-message"></div>
     <p>还没有账号？<a href="register.html">注册</a></p>
 </div>
 
 <script>
+    document.getElementById('login-button').addEventListener('click', login);
+
     function login() {
         const username = document.getElementById('login-username').value;
         const password = document.getElementById('login-password').value;
