@@ -20,12 +20,14 @@
     <input type="text" id="register-purpose" placeholder="注册用途" required>
     <input type="password" id="register-password" placeholder="密码" required>
     <input type="password" id="register-confirm-password" placeholder="确认密码" required>
-    <button onclick="register()">注册</button>
+    <button id="register-button">注册</button>
     <div class="message" id="register-message"></div>
     <p>已有账号？<a href="index.html">登录</a></p>
 </div>
 
 <script>
+    document.getElementById('register-button').addEventListener('click', register);
+
     function register() {
         const username = document.getElementById('register-username').value;
         const email = document.getElementById('register-email').value;
