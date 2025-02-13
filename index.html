@@ -1,67 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login and Registration</title>
+    <title>明颉电影</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<div class="container" id="login-container">
-    <h2>Login</h2>
-    <input type="text" id="login-username" placeholder="Username" required>
-    <input type="password" id="login-password" placeholder="Password" required>
-    <button onclick="login()">Login</button>
-    <div class="message" id="login-message"></div>
-</div>
-
-<div class="container" id="register-container">
-    <h2>Register</h2>
-    <input type="text" id="register-username" placeholder="Username" required>
-    <input type="email" id="register-email" placeholder="Email" required>
-    <input type="tel" id="register-phone" placeholder="Phone Number" required>
-    <input type="text" id="register-company" placeholder="Company Name" required>
-    <input type="text" id="register-purpose" placeholder="Registration Purpose" required>
-    <input type="password" id="register-password" placeholder="Password" required>
-    <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
-    <button onclick="register()">Register</button>
-    <div class="message" id="register-message"></div>
-</div>
-
-<script>
-    let users = [];
-
-    function login() {
-        const username = document.getElementById('login-username').value;
-        const password = document.getElementById('login-password').value;
-
-        const user = users.find(u => u.username === username && u.password === password);
-        if (user) {
-            window.location.href = 'dashboard.html';
-        } else {
-            document.getElementById('login-message').innerText = 'Invalid username or password';
-        }
-    }
-
-    function register() {
-        const username = document.getElementById('register-username').value;
-        const email = document.getElementById('register-email').value;
-        const phone = document.getElementById('register-phone').value;
-        const company = document.getElementById('register-company').value;
-        const purpose = document.getElementById('register-purpose').value;
-        const password = document.getElementById('register-password').value;
-        const confirmPassword = document.getElementById('register-confirm-password').value;
-
-        if (password !== confirmPassword) {
-            document.getElementById('register-message').innerText = 'Passwords do not match';
-            return;
-        }
-
-        users.push({ username, email, phone, company, purpose, password });
-        document.getElementById('register-message').innerText = 'Registration successful. You can now login.';
-    }
-</script>
-
+    <div class="container">
+        <div class="form-container sign-up-container">
+            <form id="registerForm">
+                <h1>注册</h1>
+                <input type="text" placeholder="用户名" required />
+                <input type="email" placeholder="邮箱" required />
+                <input type="password" placeholder="密码" required />
+                <button type="submit">注册</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form id="loginForm">
+                <h1>登录</h1>
+                <input type="email" placeholder="邮箱" required />
+                <input type="password" placeholder="密码" required />
+                <button type="submit">登录</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>欢迎回来!</h1>
+                    <p>请登录以继续访问</p>
+                    <button class="ghost" id="signIn">登录</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>新用户?</h1>
+                    <p>填写信息完成注册</p>
+                    <button class="ghost" id="signUp">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
